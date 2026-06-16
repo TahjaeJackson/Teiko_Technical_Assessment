@@ -1,3 +1,11 @@
-PART 3 STATISTICAL ANALYSIS
+PART 3: STATISTICAL ANALYSIS
 
-cd4_t_cell showed a statistically significant difference (p=0.0134). Responders had a median frequency of 30.22% compared with 29.66% for non-responders.
+1 statistically significant population(s) were identified.
+
+Population: cd4_t_cell
+• P-value: 0.0134
+• Median frequency (Responders): 30.22%
+• Median frequency (Non-responders): 29.66%
+• Difference: 0.56%
+
+Conclusion: Responders exhibited significantly different immune cell frequencies for the population(s) listed above.

@@ -107,7 +107,6 @@ sample_id
 subject_id -> subjects.subject_id
 ```
 
-
 ## cell_counts
 
 Stores immune cell population measurements.
@@ -158,7 +157,7 @@ Teiko_Technical_Assessment/
 │   └── plots/
 │
 ├── dashboard/
-│   └── app.py
+│   └── React/Vite interactive dashboard for exploring analysis results and visualizations
 │
 ├── load_data.py
 ├── part2_data_overview.py
@@ -288,6 +287,7 @@ make pipeline
 ```
 
 ## Launch Dashboard
+# link: 
 
 ```bash
 make dashboard

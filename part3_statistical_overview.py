@@ -183,26 +183,24 @@ Input: results dataframe
 """
 def create_report(results_df):
 
-    significant = results_df[ results_df["p_value"] < 0.05]
+    significant = results_df[results_df["p_value"] < 0.05]
     report_lines = []
-    report_lines.append(
-        "PART 3 STATISTICAL ANALYSIS\n"
-    )
+    report_lines.append("PART 3: STATISTICAL ANALYSIS\n")
 
     if len(significant) == 0:
-        report_lines.append(
-            "No statistically significant differences were detected."
-        )
+        report_lines.append( "No statistically significant differences were detected between responders and non-responders.")
+
     else:
+        report_lines.append(f"{len(significant)} statistically significant population(s) were identified.\n" )
         for _, row in significant.iterrows():
 
-            report_lines.append(
-                f"{row['population']} showed a statistically significant difference "
-                f"(p={row['p_value']:.4f}). "
-                f"Responders had a median frequency of "
-                f"{row['median_responder']}% compared with "
-                f"{row['median_nonresponder']}% for non-responders."
-            )
+            report_lines.append( f"Population: {row['population']}")
+            report_lines.append(f"• P-value: {row['p_value']:.4f}")
+            report_lines.append(f"• Median frequency (Responders): {row['median_responder']:.2f}%")
+            report_lines.append(f"• Median frequency (Non-responders): {row['median_nonresponder']:.2f}%")
+            report_lines.append(f"• Difference: {row['difference']:.2f}%\n")
+
+        report_lines.append("Conclusion: Responders exhibited significantly different immune cell frequencies for the population(s) listed above.")
 
     with open(REPORT_FILE, "w") as f:
         f.write("\n".join(report_lines))

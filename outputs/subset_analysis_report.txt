@@ -1,18 +1,20 @@
-PART 4 SUBSET ANALYSIS
+PART 4: SUBSET ANALYSIS
 
-Samples per project
-project  sample_count
-   prj1           384
-   prj3           272
+Dataset Overview
+• Total samples analyzed: 656
+• Total subjects analyzed: 656
 
-Responder status
-response  subject_count
-      no            325
-     yes            331
+Project Distribution
+• prj1: 384 samples (58.5% of all samples)
+• prj3: 272 samples (41.5% of all samples)
 
-Sex breakdown
-sex  subject_count
-  F            312
-  M            344
+Responder Distribution
+• Non-responders: 325 subjects (49.5%)
+• Responders: 331 subjects (50.5%)
 
-Average B-cell count for melanoma male responders at baseline: 10401.28
+Sex Distribution
+• Female: 312 subjects (47.6%)
+• Male: 344 subjects (52.4%)
+
+Targeted Subset Finding
+The average baseline B-cell count among melanoma male responders was 10401.28.

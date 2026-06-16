@@ -110,35 +110,62 @@ def calculate_bcell_average(subset):
     ]
     return round(answer_df["count"].mean(),2)
 
-def save_report(project_df,response_df,sex_df,average_bcell):
+def save_report(project_df, response_df, sex_df, average_bcell):
 
     Path("outputs").mkdir(exist_ok=True)
 
+    project_counts = dict(zip(project_df.iloc[:, 0], project_df.iloc[:, 1]))
+    response_counts = dict(zip(response_df.iloc[:, 0], response_df.iloc[:, 1]))
+    sex_counts = dict(zip(sex_df.iloc[:, 0], sex_df.iloc[:, 1]))
+
+    total_samples = sum(project_counts.values())
+    total_subjects = sum(response_counts.values())
+
     with open(OUTPUT_FILE, "w") as f:
 
-        f.write("PART 4 SUBSET ANALYSIS\n\n")
-        f.write("Samples per project\n")
-        f.write(project_df.to_string(index=False))
+        f.write("PART 4: SUBSET ANALYSIS\n\n")
 
-        f.write("\n\n")
+        f.write("Dataset Overview\n")
+        f.write(f"• Total samples analyzed: {total_samples}\n")
+        f.write(f"• Total subjects analyzed: {total_subjects}\n\n")
 
-        f.write("Responder status\n")
-        f.write(response_df.to_string(index=False))
+        f.write("Project Distribution\n")
+        for project, count in project_counts.items():
+            pct = 100 * count / total_samples
+            f.write(
+                f"• {project}: {count} samples ({pct:.1f}% of all samples)\n"
+            )
 
-        f.write("\n\n")
+        f.write("\n")
 
-        f.write("Sex breakdown\n")
-        f.write(sex_df.to_string(index=False))
+        f.write("Responder Distribution\n")
+        for status, count in response_counts.items():
+            pct = 100 * count / total_subjects
+            label = "Responders" if str(status).lower() == "yes" else "Non-responders"
+            f.write(
+                f"• {label}: {count} subjects ({pct:.1f}%)\n"
+            )
 
-        f.write("\n\n")
+        f.write("\n")
 
+        f.write("Sex Distribution\n")
+        for sex, count in sex_counts.items():
+            label = "Female" if str(sex).upper() == "F" else "Male"
+            pct = 100 * count / total_subjects
+            f.write(
+                f"• {label}: {count} subjects ({pct:.1f}%)\n"
+            )
+
+        f.write("\n")
+
+        f.write("Targeted Subset Finding\n")
         f.write(
-            f"Average B-cell count for melanoma male responders at baseline: {average_bcell}"
+            f"The average baseline B-cell count among melanoma male "
+            f"responders was {average_bcell:.2f}.\n"
         )
 
     with open(ANSWER_FILE, "w") as f:
-        f.write(str(average_bcell))
-        
+        f.write(f" For Melanoma males, the average number of B cells for responders at time = 0 is {average_bcell:.2f} cells")
 
 
 def main():
