@@ -287,7 +287,7 @@ make pipeline
 ```
 
 ## Launch Dashboard
-# link: 
+# link: http://10.3.5.27:8080/
 
 ```bash
 make dashboard
