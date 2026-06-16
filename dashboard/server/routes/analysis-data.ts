@@ -84,8 +84,8 @@ export const handleAnalysisData: RequestHandler = (req, res) => {
     const frequenciesPath = path.join(outputsDir, "sample_population_frequencies.csv");
     if (fs.existsSync(frequenciesPath)) {
       const content = fs.readFileSync(frequenciesPath, "utf-8");
-      const lines = content.trim().split("\n");
-      samplesCount = Math.max(lines.length - 1, 0); // subtract header
+      const records = parseCSV(content);
+      samplesCount = new Set(records.map((r) => r.sample_id)).size;
     }
 
     const populations = [...new Set(statistics.map((s) => s.population))];
