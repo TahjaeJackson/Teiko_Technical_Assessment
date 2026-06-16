@@ -1,0 +1,18 @@
+PART 4 SUBSET ANALYSIS
+
+Samples per project
+project  sample_count
+   prj1           384
+   prj3           272
+
+Responder status
+response  subject_count
+      no            325
+     yes            331
+
+Sex breakdown
+sex  subject_count
+  F            312
+  M            344
+
+Average B-cell count for melanoma male responders at baseline: 10401.28

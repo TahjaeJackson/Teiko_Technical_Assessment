@@ -13,7 +13,6 @@ from pathlib import Path
 # importing helper functions from part 3
 
 from part3_statistical_overview import (
-    load_frequency_data,
     load_samples,
     load_subjects,
     create_analysis_dataframe
@@ -22,6 +21,23 @@ from part3_statistical_overview import (
 DB_NAME = "cell_count.db"
 OUTPUT_FILE = "outputs/subset_analysis_report.txt"
 ANSWER_FILE = "outputs/google_form_answer.txt"
+
+"""
+Description: Loads the Part 2 frequency table generated earlier in the pipeline
+Input: None
+Output: Frequency dataframe
+"""
+def load_frequency_data():
+
+    frequency_file = "outputs/sample_population_frequencies.csv"
+    if not Path(frequency_file).exists():
+        raise FileNotFoundError(
+            "outputs/sample_population_frequencies.csv not found. "
+            "Run the pipeline before running Part 4."
+        )
+    return pd.read_csv(
+        frequency_file
+    )
 
 """
 Description: Creates the subset required for Part 4
@@ -88,7 +104,7 @@ def calculate_bcell_average(subset):
     answer_df = subset[
         (subset["population"] == "b_cell")
         &
-        (subset["sex"] == "male")
+        (subset["sex"] == "M")
         &
         (subset["response"] == "yes")
     ]

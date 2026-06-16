@@ -1,0 +1,6 @@
+population,median_responder,median_nonresponder,difference,p_value
+b_cell,9.43,9.79,-0.36,0.055748
+cd8_t_cell,24.73,24.6,0.13,0.639199
+cd4_t_cell,30.22,29.66,0.56,0.013407
+nk_cell,14.51,14.8,-0.29,0.12106
+monocyte,19.61,19.94,-0.33,0.163509
